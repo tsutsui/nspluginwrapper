@@ -56,7 +56,11 @@
 #define USE_XEMBED_HACK 1
 
 // Define to use NPIdentifier cache
+#if defined(BUILD_GENERIC)
+#define USE_NPIDENTIFIER_CACHE 0
+#else
 #define USE_NPIDENTIFIER_CACHE 1
+#endif
 #define NPIDENTIFIER_CACHE_SIZE 256
 
 // RPC global connections
