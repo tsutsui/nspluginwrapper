@@ -138,21 +138,14 @@ static const char *get_system_mozilla_plugin_dir(void)
 	  };
 	  dirs = freebsd_dirs;
 	}
-#elif defined(__DragonFly__)
+#elif defined(__DragonFly__) || defined(__NetBSD__)
 	{
-	  static const char *dragonfly_dirs[] = {
-		"/usr/pkg/" LIB "/mozilla/plugins",
-		"/usr/pkg/" LIB "/firefox/plugins",
+	  static const char *pkgsrc_dirs[] = {
+		LIBDIR "/netscape/plugins",
+		LIBDIR "/firefox/plugins",
+		LIBDIR "/seamonky/plugins",
 	  };
-	  dirs = dragonfly_dirs;
-	}
-#elif defined(__NetBSD__)
-	{
-	  static const char *netbsd_dirs[] = {
-		"/usr/pkg/" LIB "/mozilla/plugins",
-		"/usr/pkg/" LIB "/firefox/plugins",
-	  };
-	  dirs = netbsd_dirs;
+	  dirs = pkgsrc_dirs;
 	}
 #elif defined(__sun__)
 	{
@@ -238,16 +231,10 @@ static const char **get_mozilla_plugin_dirs(void)
 	"/usr/local/lib/npapi/linux-flashplugin",
 	"/usr/X11R6/Adobe/Acrobat7.0/ENU/Browser/intellinux",
 #endif
-#if defined(__DragonFly__)
+#if defined(__DragonFly__) || defined(__NetBSD__)
 	"/usr/pkg/lib/netscape/plugins",
 	"/usr/pkg/lib/firefox/plugins",
-	"/usr/pkg/lib/RealPlayer/mozilla",
-	"/usr/pkg/Acrobat5/Browsers/intellinux",
-	"/usr/pkg/Acrobat7/Browser/intellinux",
-#endif
-#if defined(__NetBSD__)
-	"/usr/pkg/lib/netscape/plugins",
-	"/usr/pkg/lib/firefox/plugins",
+	"/usr/pkg/lib/seamonky/plugins",
 	"/usr/pkg/lib/RealPlayer/mozilla",
 	"/usr/pkg/Acrobat5/Browsers/intellinux",
 	"/usr/pkg/Acrobat7/Browser/intellinux",
